@@ -1,4 +1,3 @@
-// utils/feedback.js
 class Feedback {
     static giveFeedback(result) {
         return `Action performed successfully: ${result}`;
@@ -10,4 +9,5 @@ class Feedback {
     }
 }
 
-module.exports = Feedback;
+// Exporting the Feedback class using ES module syntax
+export default Feedback;

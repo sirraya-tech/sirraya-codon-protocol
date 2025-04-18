@@ -1,4 +1,3 @@
-// codon-resolver/index.js
 class CodonResolver {
     constructor() {
         this.resolvers = new Map();
@@ -22,4 +21,5 @@ class CodonResolver {
     }
 }
 
-module.exports = CodonResolver;
+// Exporting the CodonResolver class using ES module syntax
+export default CodonResolver;

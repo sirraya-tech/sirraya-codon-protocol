@@ -1,9 +1,8 @@
-// index.js
-const CodonGenerator = require('./codon-generator');
-const CodonParser = require('./codon-parser');
-const CodonResolver = require('./codon-resolver');
-const CodonHandler = require('./codon-handler');
-const Feedback = require('./utils/feedback');
+import CodonGenerator from './codon-generator/index.js';  // Using import instead of require
+import CodonParser from './codon-parser/index.js';        // Using import instead of require
+import CodonResolver from './codon-resolver/index.js';    // Using import instead of require
+import CodonHandler from './codon-handler/index.js';      // Using import instead of require
+import Feedback from './utils/feedback.js';         // Using import instead of require
 
 // Step 1: Registering intents in the resolver
 const codonResolver = new CodonResolver();

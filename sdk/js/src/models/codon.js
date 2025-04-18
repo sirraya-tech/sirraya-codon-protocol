@@ -1,4 +1,3 @@
-// models/codon.js
 class Codon {
     constructor(identity, role, intent, context, time, geo, signature) {
         this.identity = identity;
@@ -15,4 +14,5 @@ class Codon {
     }
 }
 
-module.exports = Codon;
+// Exporting the Codon class using ES module syntax
+export default Codon;

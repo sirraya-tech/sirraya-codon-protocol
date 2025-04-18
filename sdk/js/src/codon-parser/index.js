@@ -1,5 +1,4 @@
-// codon-parser/index.js
-const CodonModel = require('../models/codon');
+import CodonModel from '../models/codon.js'; // Using import instead of require
 
 class CodonParser {
     constructor(codon) {
@@ -30,4 +29,4 @@ class CodonParser {
     }
 }
 
-module.exports = CodonParser;
+export default CodonParser; // Use export default instead of module.exports
