@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "open": "^10.1.1",
     "sirraya-sdk": "^1.0.3"
   },
   "devDependencies": {
