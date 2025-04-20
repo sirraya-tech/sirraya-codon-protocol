@@ -1,12 +1,11 @@
 Sirraya Codon Protocol
 
 
-
-
 The Codon Structure & Anatomy
 “Every codon is a whisper of intent, wrapped in structure, bound by trust.”
 
 1.1 What is a Codon?
+
 A Codon in the Sirraya protocol is a minimal, programmable packet of intent.
 It is:
 •	Self-contained
