@@ -12,7 +12,7 @@ It is:
 •	Portable
 •	Interoperable
 •	Human-readable
-•	Cryptographically secure
+•	Cryptographically secure.
 
 Codons can perform actions, carry data, trigger device functions, or communicate across systems.
 Think of it like a JSON-powered cell with behavior — a biological metaphor for a programmable world.
