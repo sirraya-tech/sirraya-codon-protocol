@@ -15,6 +15,7 @@ It is:
 •	Cryptographically secure
 
 Codons can perform actions, carry data, trigger device functions, or communicate across systems.
+
 Think of it like a JSON-powered cell with behavior — a biological metaphor for a programmable world.
 
 1.2 Core Anatomy of a Codon
@@ -77,34 +78,43 @@ This codon:
 1.5 Codon Shells (Encapsulation)
 
 To keep things flexible, we wrap Codons in shells depending on environment:
-Shell Type	Use Case	Format
-text/plain	CLI, Shell, Simple clients	Delimited string
-application/json	Web, SDKs, APIs	Structured JSON
-binary/shell	Low-level, compressed or embedded	Binary or CBOR
-event/codon	Websockets, Broadcast layers	Framed with headers
+
+Shell Type                  	Use Case	                                         Format
+
+text/plain	                    CLI, Shell, Simple clients	                        Delimited string
+application/json	            Web, SDKs, APIs                                 	Structured JSON
+binary/shell	                Low-level, compressed or embedded	                Binary or CBOR
+event/codon 	                Websockets, Broadcast layers	                    Framed with headers
+
 Each shell must be parsed into core structure before processing.
+
+
 
 1.6 Telomere Deep Dive
 
 A telomere is not just a hash. It's a smart chainable identity component that offers:
 
-Feature	Explanation
 
-Fingerprinting	Device/user signature + codon hash
+Feature                                             	Explanation
 
-Tamper Detection	Changing payload or intent invalidates hash
+Fingerprinting	                                        Device/user signature + codon hash
 
-Chain of Custody	Telomeres can include parents (dynamic telomere chains)
+Tamper Detection	                                    Changing payload or intent invalidates hash
 
-Routing Clue	Used to validate origin and verify destination identity
+Chain of Custody	                                    Telomeres can include parents (dynamic telomere chains)
+
+Routing Clue	                                        Used to validate origin and verify destination identity
+
+
+
 
 This enables trust without central authority.
 
 1.7 Codon Mutation vs. Rewriting
 
 A codon is either:
-•	✅ Immutable: No change allowed once issued. Any change = a new codon.
-•	🔄 Mutable Codon Types: Only if explicitly defined (e.g. draft_codons, learning_codons)
+•	Immutable: No change allowed once issued. Any change = a new codon.
+•	Mutable Codon Types: Only if explicitly defined (e.g. draft_codons, learning_codons)
 
 This ensures:
 •	Auditability
@@ -114,8 +124,8 @@ This ensures:
 To mutate a codon legally, you spawn a new codon, referencing the old one in meta.
 
 1.8 Nested Codons
-Codons can be nested as sequences or chains:
 
+Codons can be nested as sequences or chains:
 {
   "intent": "batch",
   "payload": [
@@ -130,6 +140,7 @@ Codons can be nested as sequences or chains:
     }
   ]
 }
+
 Useful for batch actions, pipelines, macro behavior.
 
 1.9 Codon Telemetry and Meta Intelligence
@@ -141,8 +152,10 @@ Codons can carry runtime signals like:
 •	exec_device_id
 
 This allows self-diagnosing codons in a distributed system.
-
 Think of a codon as a living molecule, traveling across networks and devices, mutating safely, and executing intelligently.
+
+
+
 
 1.10 Codon Environments & Portability
 
@@ -150,6 +163,7 @@ Codons are environment-agnostic, meaning they work the same whether you are:
 •	On Windows, Linux, Android, iOS
 •	On HTTP, WebSocket, Bluetooth, NFC
 •	In offline, air-gapped, or serverless environments
+
 They are protocol-independent capsules of logic.
 
 
@@ -164,41 +178,51 @@ Class Tagging	                            Restrict where codon can act
 Signature	                                Public/private key verification
 
 Summary
-•	Codon is a secure, portable intent structure
-•	Made of Telomere, Intent, Payload, Meta
-•	Supports nesting, chaining, mutation-awareness
-•	Each codon carries its purpose, proof, and power
-•	Designed to live across any device, network, or ecosystem
+    •	Codon is a secure, portable intent structure
+    •	Made of Telomere, Intent, Payload, Meta
+    •	Supports nesting, chaining, mutation-awareness
+    •	Each codon carries its purpose, proof, and power
+    •	Designed to live across any device, network, or ecosystem
+
+
+
 
 Chapter 2: Codon Classification System
+
 “Structure without intention is noise. But when intention is organized, it becomes life.”
 
 2.1 Why Classification Matters
+
 As codons become the atoms of distributed computation and communication, they need an organizing principle. Codons will travel, execute, mutate, and synchronize across countless systems — from healthcare IoT devices to satellites, mobile apps to offline drones.
+
 To make that scale safely and intelligently, we introduce:
+
 Codon Classification System — a universal taxonomy for how codons behave, where they belong, and what they can access.
 
 2.2 Anatomy of a Class
+
 Every codon, through its meta block, carries a field:
-json
-CopyEdit
 {
   "meta": {
     "class": "DeviceCodon"
   }
 }
+
 This class defines:
 •	What type of system it runs in (device, agent, network, app)
 •	What scope or context it belongs to
 •	What rules apply
 •	How it should be validated and routed
 •	What runtime permissions it holds
+
 Think of codon classes as execution sandboxes and behavior contracts.
 
 2.3 Core Codon Classes (V1 Spec)
 
 Below are the core native classes defined in Sirraya Codon Protocol V1:
+
 Class Name	                Description
+
 DeviceCodon	                Executes on a local device (OS, sensors, apps)
 AgentCodon	                Runs inside digital agents or AI interpreters
 NetworkCodon	            Operates on network gateways or over sockets
@@ -215,7 +239,9 @@ This system is extensible — anyone can define new custom classes by using the 
 2.4 Class Behavior Contracts
 
 Each class comes with:
+
 Feature	                    Description
+
 Scope	                    Where and how it executes
 Trust Level	                What resources it can touch
 TTL Handling	            How long it lives
@@ -225,6 +251,7 @@ Validation Strategy	        What constitutes a valid instance
 Mutation Permissions	    Can it rewrite or chain other codons?
 
 Example
+
 A DeviceCodon running open_camera must:
 •	Only run on a known device
 •	Include a trusted telomere
@@ -233,6 +260,7 @@ A DeviceCodon running open_camera must:
 2.5 Class Inheritance & Composability
 
 Codon classes can inherit behavior like object-oriented classes.
+
 Example:   SystemCodon <- DeviceCodon <- AppCodon
 
 This means:
@@ -260,12 +288,15 @@ You are defining:
 •	Validation policy
 •	Time-to-live
 •	Execution logic
+
 This makes your codons plug-and-play, portable across Sirraya SDKs.
 
 2.7 Scoped Class Access
 
 Each codon class can specify access control scopes such as:
+
 Scope	                                Example
+
 system.read	                            Battery, disk space
 system.write	                        Restart, install, modify files
 network.send	                        Push message
@@ -285,7 +316,9 @@ This enables codons to run safely in sandboxed environments with a permission mo
 6. Emit post-codon lifecycle hooks
 
 2.9 Real-World Use Cases Per Class
+
 Use Case	                            Codon	                            Class
+
 Vibrate phone	                        vibrate	                            DeviceCodon
 Open browser tab	                    open_url	                        AppCodon
 Send SMS                            	send_sms                        	NetworkCodon
@@ -297,9 +330,11 @@ QR-based device command	                {"intent":"sync"}	                Offlin
 2.10 Future Vision: Adaptive Class Routing
 
 Classes may soon self-adjust based on device, trust, or environment.
+
 For instance:
 •	If a codon starts as OfflineCodon and gains a connection, it morphs into RemoteCodon
 •	Agents can promote a codon from AppCodon to SystemCodon if permissions are elevated
+
 This creates a living, morphable intent model unlike any static API-based system.
 
 2.11 Summary
@@ -310,6 +345,7 @@ This creates a living, morphable intent model unlike any static API-based system
 
 
 Chapter 3: Codon Validation Rules
+
 “In a world of distributed intelligence, trust isn't optional. It's embedded.”
 
 3.1 Why Codon Validation Exists
@@ -324,6 +360,7 @@ Sirraya Codons are programmable units of intent and action — not just messages
 In a decentralized or disconnected world, validation must be local, lightweight, and verifiable without servers.
 
 3.2 The 3 Pillars of Codon Validation
+
 Codon validation runs through a triplet of firewalls:
 
                                                         ┌─────────────────────┐
@@ -340,7 +377,9 @@ Codon validation runs through a triplet of firewalls:
 A codon must pass all three to be executed.
 
 3.3 Telomere Validation — Codon DNA
+
 What is a Telomere in Sirraya?
+
 A Telomere is a short, structured signature string appended at the start of every codon. It’s like a DNA cap — it tells the receiving system:
 •	Who made this codon
 •	What class this codon belongs to
@@ -348,6 +387,7 @@ A Telomere is a short, structured signature string appended at the start of ever
 •	What mutation lineage it has passed
 
 Example: TEL::SYS.1287F9:DEVICE:AUTH=0x928AF...
+
 This may include:
 •	Class ID
 •	Origin device hash
@@ -355,7 +395,7 @@ This may include:
 •	Signature fingerprint (optional but preferred)
 •	Mutation count (used in tracking)
 
-✅ How Telomere Validation Works
+How Telomere Validation Works
 
 const isTelomereValid = (telomere, expected) => {
   return telomere.startsWith(expected.prefix) &&
@@ -369,7 +409,8 @@ If a codon’s telomere doesn’t match the expected prefix, device ID, or class
 3.4 Payload Integrity — Anti-Tampering
 
 Even if a telomere is valid, a hacker could change the payload. That’s why we Merkle-hash the payload.
-🔹 How it works:
+
+How it works:
 
 Before a codon is sent:
 
@@ -381,13 +422,15 @@ On the receiving end:
 
 const reHashed = regenerateMerkleTree(codon.payload);
 if (reHashed.getRoot() !== codon.meta.hash) rejectCodon();
+
 This makes any single bit of change in the payload visible through hash mismatch.
 
 3.5 Contextual Rules — Smart Execution Safety
+
 A codon must respect environmental rules:
-•	Is it trying to run a SystemCodon on a browser? ❌
-•	Is it trying to send network packets in airplane mode? ❌
-•	Is the class mismatched with intent? ❌
+•	Is it trying to run a SystemCodon on a browser? 
+•	Is it trying to send network packets in airplane mode? 
+•	Is the class mismatched with intent? 
 
 
 const isClassIntentMismatch = (codon) => {
@@ -396,6 +439,7 @@ const isClassIntentMismatch = (codon) => {
 };
 
 const isExpired = (ttl) => Date.now() > ttl;
+
 These rules make codons fail-safe and context-aware.
 
 3.6 Dynamic Telomere Chains
@@ -406,30 +450,39 @@ Example Trail:
 Original: TEL::SYS.X0Y12Z:DEVICE
  ↳ Forked to: TEL::SYS.X0Y12Z-α1:AGENT
  ↳ Forked to: TEL::SYS.X0Y12Z-α1-β3:REMOTE
+
 This is like genetic ancestry for codons — allowing auditing and mutation rollback if needed.
 
 3.7 Codon Integrity Graphs (Optional Spec)
 
 Codons can emit traces to form a graph of intents and changes — like a Git tree of intent flow.
+
 Each node stores:
 •	Codon hash
 •	Parent(s)
 •	Mutation source
 •	Execution result
 •	Environment snapshot
+
 These graphs can be visualized to trace:
 •	Message tampering
 •	Agent mutation
 •	Timeline of execution
 
 3.8 Validating Across Devices
+
 If two devices don’t know each other yet, they must share their telomere headers as part of codon preamble.
+
 For public networks:
+
 •	Codons can embed public signature claims using DID/PKI (Decentralized IDs)
+
 For private mesh:
+
 •	Devices sync via handshake: _“Here’s my telomere schema” → “Okay, I trust this issuer”
 
 3.9 Offline Codon Validation
+
 No internet? No server? No problem.
 •	Codons carry everything they need.
 •	Signature validation is embedded.
@@ -450,14 +503,21 @@ This makes Sirraya usable in:
 •	Codon Chains bring traceability and mutation awareness.
 •	Validation is local, resilient, and cryptographically grounded.
 
+
+
+
+
 Chapter 4: Codon Class Handlers and the Intent Registry System
 
 “Where code meets purpose, and intent becomes power.”
 
+
 4.1 What Are Codon Class Handlers?
+
 In the Sirraya system, Codon Class Handlers are programmable brains that listen for specific kinds of codons and execute their logic — whether on your local device, a browser, a mesh node, or even a robot arm.
 
 They are the codeful expression of intent.
+
 Each handler is:
 •	Bound to a codon class (like System, Media, Network, Device, AI)
 •	Able to resolve intents from codons of that class
@@ -472,13 +532,19 @@ Codon = Intent + Context + Execution Logic
   ├── 🧾 Payload: { file: "song.mp3", volume: 70 }
   └── 🔐 Signature
 
+
+
 🧠 Codon Handler:
   - Checks telomere, class, signature
   - Resolves “play_audio” inside MEDIA handler
   - Invokes the native API to play music
 
+
+
 📦 4.2 The Codon Registry System
+
 This is the central brain of codon dispatching.
+
 It consists of:
 •	A registry map of all codon classes
 •	A list of declared intents per class
@@ -498,11 +564,11 @@ CodonRegistry ensures:
 
 Here’s what a basic class handler looks like:
 
-// src/handlers/MediaHandler.ts
+
 export const MediaHandler = {
   play_audio: async (payload) => {
     const { file, volume } = payload;
-    // Local execution logic (browser or device)
+  
     return playFile(file, volume);
   },
 
@@ -519,7 +585,7 @@ These can live:
 
 4.4 How Codon Dispatch Works
 
-// Main dispatcher
+
 CodonEngine.handle(codon) => {
   const { class: className, intent } = codon.meta;
 
@@ -541,9 +607,14 @@ So sending this codon:
 
 MediaHandler.mute()
 
-🎯 4.5 Codon Class Types (Design System)
+
+
+4.5 Codon Class Types (Design System)
+
 To keep things organized and modular, we define Codon Classes.
+
 Class	                        Description	                                        Sample Intents
+
 SYSTEM	                        OS-level functions	                                shutdown, reboot, sleep
 MEDIA	                        Audio/video                                         I/O	play_audio, record, mute
 DEVICE	                        Device-specific hardware actions	                vibrate, flashlight_on
@@ -552,7 +623,10 @@ AI	                            Invoke local/remote AI	                          
 NETWORK	                        Send data across systems	                        fetch_url, broadcast, tunnel
 AGENT	                        Agent to agent interaction	                        ping, negotiate, transfer
 
-🔐 4.6 Intent Permissions and Scopes
+
+
+
+4.6 Intent Permissions and Scopes
 Each class can have:
 •	Permission Levels (root, agent, user, system)
 •	Execution Scope (local, remote, cloud, P2P)
@@ -567,7 +641,9 @@ CodonRegistry.registerClass('SYSTEM', {
   scope: 'local-only',
 });
 
-🌐 4.7 Remote Codon Execution
+
+
+4.7 Remote Codon Execution
 If a codon’s target class is not registered on local device:
 •	We emit to network (codon-broadcast)
 •	Any peer with matching handler resolves it
@@ -578,14 +654,21 @@ CodonEngine.handle(codon)
     return broadcastCodonToPeers(codon);
   });
 
-🔁 4.8 Codon Forwarding & Mutation
+
+
+
+4.8 Codon Forwarding & Mutation
 A codon can:
 •	Be forked into sub-codons (intent: fork)
 •	Be forwarded to another class (intent: delegate)
 •	Be transformed (intent: mutate)
+
 Useful in mesh systems, AI chaining, or chain of commands.
 
-📚 4.9 Developer Story: Building a New Class
+
+
+4.9 Developer Story: Building a New Class
+
 Let’s say you want a SMART_HOME codon class.
 
 CodonRegistry.registerClass('SMART_HOME', {
